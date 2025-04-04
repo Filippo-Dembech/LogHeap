@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import { NavLink } from "react-router";
-import TypewriterComponent from "typewriter-effect";
 
 export default function Logo({ className }) {
     return (

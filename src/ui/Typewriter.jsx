@@ -14,7 +14,7 @@ export default function TypewriterHero() {
     return (
         <Typography
             variant="h2"
-            style={{ fontSize: "min(3.4rem, 7vw)" }}
+            style={{ fontSize: "clamp(1rem, 7vw, 3.4rem)" }}
         >
             <code className="flex justify-between px-5 sm:px-10 md:px-22">
                 <span>Log.Heap(</span>
