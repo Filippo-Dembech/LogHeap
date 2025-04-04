@@ -26,7 +26,12 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:flex">
                 {navItems.map((navItem) => (
-                    <ScaleLink to={navItem.path}>{navItem.label}</ScaleLink>
+                    <ScaleLink
+                        key={navItem.label}
+                        to={navItem.path}
+                    >
+                        {navItem.label}
+                    </ScaleLink>
                 ))}
             </div>
             <Drawer
@@ -37,7 +42,12 @@ export default function Navbar() {
                     <Logo />
                     <div className="flex flex-col gap-3 mt-5 p-3">
                         {navItems.map((navItem) => (
-                            <ScaleLink to={navItem.path}>{navItem.label}</ScaleLink>
+                            <ScaleLink
+                                key={navItem.label}
+                                to={navItem.path}
+                            >
+                                {navItem.label}
+                            </ScaleLink>
                         ))}
                     </div>
                 </div>

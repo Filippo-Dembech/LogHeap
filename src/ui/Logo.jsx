@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import { NavLink } from "react-router";
+import TypewriterComponent from "typewriter-effect";
 
 export default function Logo({ className }) {
     return (
@@ -9,7 +10,7 @@ export default function Logo({ className }) {
                 src="logheap-logo.png"
                 alt="logo-img"
             />
-            <Typography className="border-b-2" variant="h5">LogHeap</Typography>
+            <Typography className="border-b-2" variant="h5"><code>Log.Heap()</code></Typography>
         </NavLink>
     );
 }
