@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import TypewriterComponent from "typewriter-effect";
 

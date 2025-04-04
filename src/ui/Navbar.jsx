@@ -38,9 +38,9 @@ export default function Navbar() {
                 open={isOpen}
                 onClose={toggleDrawer}
             >
-                <div className="p-3">
+                <div className="py-7 pl-4 pr-6">
                     <Logo />
-                    <div className="flex flex-col gap-3 mt-5 p-3">
+                    <div className="flex flex-col items-center gap-3 mt-5 p-3">
                         {navItems.map((navItem) => (
                             <ScaleLink
                                 key={navItem.label}
