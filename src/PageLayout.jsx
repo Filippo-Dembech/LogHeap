@@ -11,13 +11,16 @@ export default function PageLayout() {
                 dark: colors.fuchsia[800],
                 light: colors.fuchsia[50],
             }
+        },
+        typography: {
+            fontFamily: "Inconsolata"
         }
     })
     const responsiveTheme = responsiveFontSizes(theme);
 
     return (
         <ThemeProvider theme={responsiveTheme}>
-            <div>
+            <div className="font-maven">
                 <Navbar />
                 <main>
                     <Outlet />

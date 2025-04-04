@@ -21,14 +21,7 @@ export default function Homepage() {
 
             <div className="flex flex-col gap-8 mt-8">
                 <div className="bg-linear-90 from-purple-400 to-fuchsia-500 p-8 mx-5 rounded-2xl">
-                    <Typography variant="h3" fontWeight="bold">WHAT IS Log-Heap?</Typography>
-                    <p className="mt-2">
-                        A place where to keep all your coding knowledge. Save
-                        interesting finds while browsing the web — things you
-                        don't want to forget. Stash them for later and stay
-                        focused on your workflow. Track your coding journey
-                        without interruptions.
-                    </p>
+                    <Typography variant="h4" textAlign="center" fontWeight="">Stash all your Computer Science knowledge in a single place</Typography>
                 </div>
                 <Typography
                     variant="h3"
