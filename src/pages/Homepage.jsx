@@ -15,7 +15,7 @@ export default function Homepage() {
             </Typography>
 
             <div
-                className="bg-purple-200 text-white py-6 px-3"
+                className="bg-purple-200 text-white py-8 px-3"
             >
                 <Typography
                     variant="h4"
@@ -29,7 +29,7 @@ export default function Homepage() {
 
             <TypewriterHero />
 
-            <Areas />
+            <Areas className="bg-purple-200 py-8"/>
         </div>
     );
 }
