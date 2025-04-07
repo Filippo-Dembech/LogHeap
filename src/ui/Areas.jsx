@@ -11,7 +11,7 @@ function TabContent(props) {
 
 function AreaContent({ title, content }) {
     return (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 text-slate-700">
             <NavLink
                 to={`/${title}`}
                 className="relative bold text-3xl font-semibold text-purple-800 after:border-0 cursor-pointer self-start after:content-[''] hover:after:border-1 after:absolute after:bottom-0 after:transition-all after:w-0 after:left-0 hover:after:w-full pr-1"
