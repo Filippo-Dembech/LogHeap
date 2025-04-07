@@ -23,6 +23,10 @@ export default function Navbar() {
             label: "Questions",
         },
         {
+            path: "/patterns",
+            label: "Patterns"
+        },
+        {
             path: "/todos",
             label: "Todos"
         }
@@ -32,11 +36,11 @@ export default function Navbar() {
         <nav className="bg-purple-400 p-3 flex items-center justify-between sm:justify-start">
             <Logo className="hidden sm:flex sm:mr-15"/>
             <div className="sm:hidden">
-                <IconButton>
-                    <RxHamburgerMenu onClick={toggleDrawer} />
+                <IconButton onClick={toggleDrawer}>
+                    <RxHamburgerMenu />
                 </IconButton>
             </div>
-            <div className="hidden sm:flex gap-13">
+            <div className="hidden sm:flex sm:flex-1 sm:justify-evenly">
                 {navItems.map((navItem) => (
                     <NavbarLink
                         key={navItem.label}
