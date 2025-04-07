@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Typography } from "@mui/material";
 import { FaMapPin, FaQuestion, FaTasks } from "react-icons/fa";
 import { LuBlocks } from "react-icons/lu";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 function TabContent(props) {
     return <div className="p-8 bg-purple-50">{props.children}</div>;
@@ -27,6 +27,7 @@ export default function Areas({ className }) {
     const [activeTab, setActiveTab] = useState(0);
 
     const setTab = (e, newValue) => setActiveTab(newValue);
+    const navigate = useNavigate();
 
     const areas = [
         {
@@ -57,7 +58,7 @@ export default function Areas({ className }) {
         <div className={className}>
             <div className="flex flex-col px-8 gap-8 sm:hidden">
                 {areas.map((area) => (
-                    <div className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50">
+                    <div className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50" onClick={() => navigate(`/${area.title}`)}>
                         <Box
                             className="absolute top-0 right-0 scale-200 rotate-30 transition-all group-hover:rotate-0 group-hover:top-5 group-hover:right-5"
                             color="primary.main"
