@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-export default function ScaleLink({ to, ...props}) {
+export default function NavbarLink({ to, ...props}) {
     return (
         <NavLink to={to} className="relative">
             <div

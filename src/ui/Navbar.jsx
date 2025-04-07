@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import { Drawer, IconButton } from "@mui/material";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
-import ScaleLink from "../components/ScaleLink";
+import NavbarLink from "../components/NavbarLink";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,12 +38,12 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:flex gap-13">
                 {navItems.map((navItem) => (
-                    <ScaleLink
+                    <NavbarLink
                         key={navItem.label}
                         to={navItem.path}
                     >
                         {navItem.label}
-                    </ScaleLink>
+                    </NavbarLink>
                 ))}
             </div>
             <Drawer
@@ -54,12 +54,12 @@ export default function Navbar() {
                     <Logo />
                     <div className="flex flex-col items-center gap-3 mt-5 p-3">
                         {navItems.map((navItem) => (
-                            <ScaleLink
+                            <NavbarLink
                                 key={navItem.label}
                                 to={navItem.path}
                             >
                                 {navItem.label}
-                            </ScaleLink>
+                            </NavbarLink>
                         ))}
                     </div>
                 </div>
