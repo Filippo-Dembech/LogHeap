@@ -1,36 +1,35 @@
 import { Typography } from "@mui/material";
-import TypewriterHero from "../ui/Typewriter";
+import TypewriterHero from "../ui/TypewriterHero";
 import Areas from "../ui/Areas";
 import GradientText from "../components/GradientTexrt";
 
 export default function Homepage() {
     return (
-        <div className="max-w-[800px] m-auto">
-            <div className="p-4">
+        <div className="max-w-[800px] m-auto flex flex-col gap-8 py-8">
+            <Typography
+                variant="h1"
+                textAlign="center"
+                fontWeight="bold"
+            >
+                <GradientText>Log-Heap</GradientText>
+            </Typography>
+
+            <div
+                className="bg-purple-200 text-white py-6 px-3"
+            >
                 <Typography
-                    variant="h1"
+                    variant="h4"
                     textAlign="center"
+                    fontFamily="Maven Pro"
                     fontWeight="bold"
-                    marginY={4}
                 >
-                    <GradientText>Log-Heap</GradientText>
+                    Stash all your Computer Science knowledge in a single place
                 </Typography>
-
-                <TypewriterHero />
             </div>
 
-            <div className="flex flex-col gap-8 mt-8">
-                <div className="bg-linear-90 from-purple-400 to-fuchsia-500 p-8 mx-5 rounded-2xl">
-                    <Typography variant="h4" textAlign="center" fontWeight="">Stash all your Computer Science knowledge in a single place</Typography>
-                </div>
-                <Typography
-                    variant="h3"
-                    textAlign="center"
-                >
-                    <GradientText>AREAS</GradientText>
-                </Typography>
-                <Areas />
-            </div>
+            <TypewriterHero />
+
+            <Areas />
         </div>
     );
 }

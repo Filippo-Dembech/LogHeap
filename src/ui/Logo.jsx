@@ -9,7 +9,7 @@ export default function Logo({ className }) {
                 src="logheap-logo.png"
                 alt="logo-img"
             />
-            <Typography className="border-b-2" variant="h5"><code>Log.Heap()</code></Typography>
+            <Typography variant="h5"><code>Log.Heap()</code></Typography>
         </NavLink>
     );
 }

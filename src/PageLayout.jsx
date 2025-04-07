@@ -25,7 +25,7 @@ export default function PageLayout() {
                 <main>
                     <Outlet />
                 </main>
-                <footer className="bg-fuchsia-300 mt-8 text-right p-10">
+                <footer className="bg-purple-400 mt-8 text-right p-10">
                     Created by Filippo Dembech ©
                 </footer>
             </div>

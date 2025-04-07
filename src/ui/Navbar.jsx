@@ -17,7 +17,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-fuchsia-300 p-3 flex items-center justify-between sm:justify-start">
+        <nav className="bg-purple-400 p-3 flex items-center justify-between sm:justify-start">
             <Logo className="hidden sm:flex sm:mr-15" />
             <div className="sm:hidden">
                 <IconButton>

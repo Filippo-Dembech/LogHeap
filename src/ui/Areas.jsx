@@ -1,26 +1,31 @@
-import { Divider, Tab, Tabs, Typography } from "@mui/material";
+import {
+    Box,
+    Tab,
+    Tabs,
+} from "@mui/material";
 import { useState } from "react";
+import { Typography } from "@mui/material";
+import { FaMapPin, FaQuestion, FaTasks } from "react-icons/fa";
+import { LuBlocks } from "react-icons/lu";
+import { NavLink } from "react-router";
 
 function TabContent(props) {
-    return <div className="p-8 bg-fuchsia-700 text-violet-100">{props.children}</div>;
-}
-
-function Area({ title, ...props }) {
     return (
-        <div className="bg-linear-80 to-purple-600 via-purple-800 from-fuchsia-800 p-4 rounded-2xl">
-            <Typography
-                variant="h4"
-                fontWeight="bold"
-                color="white"
-                textTransform="uppercase"
-            >
-                {title}
-            </Typography>
-            <Divider className="bg-white"/>
-            <p className="text-slate-50 mt-3">{props.children}</p>
+        <div className="p-8 bg-purple-50">
+            {props.children}
         </div>
     );
 }
+
+function AreaContent({ title, content }) {
+    return (
+        <div className="flex flex-col gap-1">
+            <NavLink to={`/${title}`} className="relative bold text-3xl font-semibold text-purple-800 after:border-0 cursor-pointer self-start after:content-[''] hover:after:border-1 after:absolute after:bottom-0 after:transition-all after:w-0 after:left-0 hover:after:w-full pr-1">{title}</NavLink>
+            <p>{content}</p>
+        </div>
+    )
+}
+
 
 export default function Areas() {
     const [activeTab, setActiveTab] = useState(0);
@@ -30,40 +35,47 @@ export default function Areas() {
     const areas = [
         {
             title: "insights",
+            icon: <FaMapPin />,
             content:
-                "Stash all the insights of a language, all the syntactic quirks, all the special cases and things that you find insightful and useful.",
+                "Collect all the cool and useful stuff you learn about the language."
         },
         {
             title: "questions",
+            icon: <FaQuestion />,
             content:
-                "You are reading a documentation or a Stack O. answer and you don't know what the author is talking about? Don't worry, stash all the questions you have here and check them out later! If you try to answer EVERY single question you have while reading docs, answers, or something else you will never get to the end of it. Stash questions and keep reading...",
+                "Confused while reading? Stash questions and keep going.",
         },
         {
             title: "patterns",
+            icon: <LuBlocks />,
             content:
-                "You have read a lot of docs and code and you have found interesting patterns you are willing to save. Save them here! Syntax patterns, coding patterns, whathever you want...",
+                "Found cool patterns in code or docs? Save them here!",
         },
         {
             title: "todos",
+            icon: <FaTasks/>,
             content:
-                "Some tech to check out? Some new article you want to read? Some new tutorial to watch? Stash all of them here in the log heap! You will check them later!",
+                "Got tech, articles, or tutorials to check out? Stash them here for later!",
         },
     ];
 
     return (
         <div>
-            <div className="flex flex-col gap-5 px-8 sm:hidden">
+            <div className="flex flex-col px-8 gap-8 sm:hidden">
                 {areas.map((area) => (
-                    <Area
-                        key={area.content}
-                        title={area.title}
-                    >
-                        {area.content}
-                    </Area>
+                    <div className="group shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-100">
+                        <Box className="absolute top-0 right-0 scale-200 rotate-30 transition-all group-hover:rotate-0 group-hover:top-5 group-hover:right-5" color="primary.main">{area.icon}</Box>
+                        <Typography variant="h4" color="primary.main">{area.title}</Typography>
+                        <p>{area.content}</p>
+                    </div>
                 ))}
             </div>
-            <div className="hidden sm:block sm:w-min sm:m-auto bg-fuchsia-200 rounded-2xl overflow-hidden">
-                <Tabs value={activeTab} onChange={setTab} centered>
+            <div className="hidden sm:block sm:w-min sm:m-auto bg-purple-200 rounded-2xl overflow-hidden">
+                <Tabs
+                    value={activeTab}
+                    onChange={setTab}
+                    centered
+                >
                     {areas.map((area, i) => (
                         <Tab
                             key={i}
@@ -72,10 +84,10 @@ export default function Areas() {
                         />
                     ))}
                 </Tabs>
-                {activeTab === 0 && <TabContent>{areas[0].content}</TabContent>}
-                {activeTab === 1 && <TabContent>{areas[1].content}</TabContent>}
-                {activeTab === 2 && <TabContent>{areas[2].content}</TabContent>}
-                {activeTab === 3 && <TabContent>{areas[3].content}</TabContent>}
+                {activeTab === 0 && <TabContent><AreaContent {...areas[0]}/></TabContent>}
+                {activeTab === 1 && <TabContent><AreaContent {...areas[1]}/></TabContent>}
+                {activeTab === 2 && <TabContent><AreaContent {...areas[2]}/></TabContent>}
+                {activeTab === 3 && <TabContent><AreaContent {...areas[3]}/></TabContent>}
             </div>
         </div>
     );
