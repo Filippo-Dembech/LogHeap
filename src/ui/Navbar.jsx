@@ -14,6 +14,18 @@ export default function Navbar() {
             path: "/",
             label: "Homepage",
         },
+        {
+            path: "/insights",
+            label: "Insights",
+        },
+        {
+            path: "/questions",
+            label: "Questions",
+        },
+        {
+            path: "/todos",
+            label: "Todos"
+        }
     ];
 
     return (
@@ -24,7 +36,7 @@ export default function Navbar() {
                     <RxHamburgerMenu onClick={toggleDrawer} />
                 </IconButton>
             </div>
-            <div className="hidden sm:flex">
+            <div className="hidden sm:flex gap-13">
                 {navItems.map((navItem) => (
                     <ScaleLink
                         key={navItem.label}
