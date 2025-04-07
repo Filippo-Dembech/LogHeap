@@ -20,9 +20,9 @@ export default function PageLayout() {
 
     return (
         <ThemeProvider theme={responsiveTheme}>
-            <div className="font-maven">
+            <div className="font-maven flex flex-col min-h-dvh">
                 <Navbar />
-                <main>
+                <main className="flex-1">
                     <Outlet />
                 </main>
                 <footer className="bg-purple-400 mt-8 text-right p-10">
