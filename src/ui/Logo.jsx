@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { NavLink } from "react-router";
 
-export default function Logo({ className, onClick }) {
+export default function Logo({ className, onClick, onlyIcon }) {
     
     return (
         <NavLink to="/" onClick={onClick} className={`flex items-center gap-2 ${className}`}>
@@ -10,7 +10,7 @@ export default function Logo({ className, onClick }) {
                 src="logheap-logo.png"
                 alt="logo-img"
             />
-            <Typography variant="h5"><code>Log.Heap()</code></Typography>
+            {!onlyIcon && <Typography variant="h5"><code>Log.Heap()</code></Typography>}
         </NavLink>
     );
 }

@@ -1,12 +1,10 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router";
+import { useLocation } from "react-router";
 
 export default function SamplesPage() {
     
     const location = useLocation();
-    
-    console.log(location.state.targetId)
 
     useEffect(() => {
         if (location?.state?.targetId) {
@@ -18,9 +16,14 @@ export default function SamplesPage() {
     }, [location])
     
     return (
-        <div>
+        <div className="py-6 px-8">
             <div id="insights">
                 <Typography variant="h2">Insights Samples</Typography>
+                <ol>
+                    <li><strong>Javascript Feature</strong>: Javascript is Single-Threaded.</li>
+                    <li><strong>Memory Management</strong>: The Stack is for static memory (e.g. variables), while the Heap is for dynamic memory (e.g. functions, objects, ...).</li>
+                    <li><strong>Array vs Map</strong>: Searching in an array is O(n), but searching is a map is O(1).</li>
+                </ol>
             </div>
             <div id="questions">
                 <Typography variant="h2">Questions Samples</Typography>

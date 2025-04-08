@@ -20,7 +20,7 @@ export default function PageLayout() {
 
     return (
         <ThemeProvider theme={responsiveTheme}>
-            <div className="font-maven flex flex-col min-h-dvh">
+            <div className="font-maven flex flex-col min-h-dvh text-slate-800">
                 <Navbar />
                 <main className="flex-1">
                     <Outlet />

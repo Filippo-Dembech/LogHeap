@@ -33,22 +33,25 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-purple-400 p-3 flex items-center justify-between sm:justify-start">
-            <Logo className="hidden sm:flex sm:mr-15"/>
-            <div className="sm:hidden">
+        <nav className="bg-purple-400 p-3">
+            <div className="flex justify-between md:hidden">
                 <IconButton onClick={toggleDrawer}>
                     <RxHamburgerMenu />
                 </IconButton>
+                <Logo onlyIcon/>
             </div>
-            <div className="hidden sm:flex sm:flex-1 sm:justify-evenly">
-                {navItems.map((navItem) => (
-                    <NavbarLink
-                        key={navItem.label}
-                        to={navItem.path}
-                    >
-                        {navItem.label}
-                    </NavbarLink>
-                ))}
+            <div className="hidden items-center justify-start md:flex">
+                <Logo className="mr-15"/>
+                <div className="flex flex-1 justify-evenly">
+                    {navItems.map((navItem) => (
+                        <NavbarLink
+                            key={navItem.label}
+                            to={navItem.path}
+                        >
+                            {navItem.label}
+                        </NavbarLink>
+                    ))}
+                </div>
             </div>
             <Drawer
                 open={isOpen}
