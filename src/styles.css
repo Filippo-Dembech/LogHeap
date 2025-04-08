@@ -1,8 +1,40 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@layer base {
+    .ProseMirror:focus {
+        outline: none;
+    }
+    /* STYLE FOR THE EDITOR PLACEHOLDER */
+    /* Placeholder for the first line in an empty editor */
+    .tiptap p.is-editor-empty:first-child::before {
+        color: #adb5bd;
+        content: attr(data-placeholder);
+        float: left;
+        height: 0;
+        pointer-events: none;
+    }
+
+    /* Placeholder for every new line */
+    .tiptap p.is-empty::before {
+        color: #adb5bd;
+        content: attr(data-placeholder);
+        float: left;
+        height: 0;
+        pointer-events: none;
+    }
+}
 
 @theme {
     --font-inconsolata: "Inconsolata", monospace;
     --font-maven: "Maven Pro", sans-serif;
-    --shadow-cool: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    --shadow-cool: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+        rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     --breakpoint-xs: 30rem;
+}
+
+@layer utilities {
+    .codeblock code {
+        @apply text-purple-700 bg-purple-100 rounded-lg px-2 py-0.5;
+    }
 }

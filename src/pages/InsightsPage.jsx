@@ -2,13 +2,14 @@ import { Button, Divider, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
+import TextEditor from "../components/TextEditor";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
     const [insights, setInsights] = useState([]);
-    
+
     function addInsight(insight) {
-        setInsights(curr => [ ...curr, insight])
+        setInsights((curr) => [...curr, insight]);
     }
 
     return (
@@ -19,6 +20,7 @@ export default function InsightsPage() {
             >
                 INSIGHTS
             </Typography>
+            <TextEditor />
             <div>
                 <p>
                     Your insights are all the important, useful or just
@@ -46,16 +48,16 @@ export default function InsightsPage() {
                         + New Insight
                     </Button>
                     <InsightForm
-                        className={isCreating ? "flex" : "hidden"}
+                        className={`mt-3 ${isCreating ? "flex" : "hidden"}`}
                         onSave={(insight) => addInsight(insight)}
                         onCleanup={() => setIsCreating(false)}
                     />
                 </div>
-                <div className="mb-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="my-3 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                     {insights.map((insight, i) => (
                         <div
                             key={i}
-                            className="shadow-cool rounded-xl p-5 flex flex-col gap-2"
+                            className="shadow-sm rounded-xl p-5 flex flex-col gap-2"
                         >
                             <Typography
                                 variant="h5"
