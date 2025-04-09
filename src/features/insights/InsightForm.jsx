@@ -75,8 +75,8 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
                     <TextEditor
                         {...field}
                         key={editorKey}
-                        isInvalid={errors?.content}
-                        invalidText={errors?.content?.message}
+                        error={errors?.content}
+                        helperText={errors?.content?.message}
                     />
                 )}
             />

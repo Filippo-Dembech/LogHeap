@@ -8,7 +8,7 @@ import TooltipButton from "./TooltipButton";
 import Placeholder from "@tiptap/extension-placeholder";
 import DOMPurify from 'dompurify'
 
-export default function TextEditor({ onChange, isInvalid, invalidText, ...props }) {
+export default function TextEditor({ onChange, error, helperText, ...props }) {
     const editor = useEditor({
         content: props.value,
         extensions: [
@@ -33,9 +33,9 @@ export default function TextEditor({ onChange, isInvalid, invalidText, ...props 
             <EditorContent
                 {...props}
                 editor={editor}
-                className={`order-2 rounded-md border-1 border-stone-300 p-3 focus:outline-none ${isInvalid ? "ring-[0.5px] ring-orange-500" : "" }`}
+                className={`order-2 rounded-md border-1 border-stone-300 p-3 focus:outline-none ${error ? "ring-[0.5px] ring-orange-500" : "" }`}
             />
-            {isInvalid && <p className="text-xs order-3 text-orange-700 -m-1 pl-5">{invalidText}</p>}
+            {error && <p className="text-xs order-3 text-orange-700 -m-1 pl-5">{helperText}</p>}
             <div className="flex gap-3 order-1">
                 <ButtonGroup variant="outlined">
                     <TooltipButton
