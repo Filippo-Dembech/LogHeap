@@ -9,9 +9,9 @@ export default function InsightsPage() {
     const [insights, setInsights] = useState([]);
 
     function addInsight(insight) {
-        console.log("new insight: ");
-        console.log(insight);
-        //setInsights((curr) => [...curr, insight]);
+        //console.log("new insight: ");
+        //console.log(insight);
+        setInsights((curr) => [...curr, insight]);
     }
 
     return (
@@ -67,8 +67,7 @@ export default function InsightsPage() {
                                 {insight.title}
                             </Typography>
                             <Divider />
-                            <p>{insight.content}</p>
-                        </div>
+                            <div dangerouslySetInnerHTML={{ __html: insight.content}} />                       </div>
                     ))}
                 </div>
             </div>

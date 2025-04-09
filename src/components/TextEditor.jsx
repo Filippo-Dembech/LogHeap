@@ -6,6 +6,7 @@ import { colors } from "../theme/colors";
 import Underline from "@tiptap/extension-underline";
 import TooltipButton from "./TooltipButton";
 import Placeholder from "@tiptap/extension-placeholder";
+import DOMPurify from 'dompurify'
 
 export default function TextEditor({ onChange, isInvalid, invalidText }) {
     const editor = useEditor({
@@ -17,7 +18,9 @@ export default function TextEditor({ onChange, isInvalid, invalidText }) {
             }),
         ],
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML());
+            const html = editor.getHTML()
+            const sanitizedHTML = DOMPurify.sanitize(html);
+            onChange(sanitizedHTML);
         },
     });
 
