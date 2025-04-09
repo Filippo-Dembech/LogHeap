@@ -1,13 +1,19 @@
 import { TextField } from "@mui/material";
 import TextEditor from "../../components/TextEditor";
 import Form from "../../components/Form";
+import { db } from "../../db/db";
 
-export default function InsightForm({ className, onClose, onCleanup, onSave }) {
+export default function InsightForm({ className, onClose, onCleanup }) {
+    
+    function addInsight(insight) {
+        db.insights.add(insight)
+    }
+
     return (
         <div className={className}>
             <Form
                 submitText="Save"
-                onSubmit={onSave}
+                onSubmit={addInsight}
                 onClose={onClose}
                 onCleanup={onCleanup}
                 defaultValues={{ title: "", content: "" }}

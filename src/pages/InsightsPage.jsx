@@ -1,16 +1,16 @@
-import { Button, Divider, TextField, Typography } from "@mui/material";
+import { Button, Divider, LinearProgress, TextField, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
 import InsightCard from "../features/insights/InsightCard";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../db/db";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
-    const [insights, setInsights] = useState([]);
-
-    function addInsight(insight) {
-        setInsights((curr) => [...curr, insight]);
-    }
+    const insights = useLiveQuery(() => db.insights.toArray());
+    
+    if (!insights) return <LinearProgress />
 
     return (
         <div className="p-8 flex flex-col gap-8">
@@ -50,7 +50,6 @@ export default function InsightsPage() {
                         className={`mt-3 ${
                             isCreating ? "flex flex-col gap-3" : "hidden"
                         }`}
-                        onSave={(insight) => addInsight(insight)}
                         onCleanup={() => setIsCreating(false)}
                     />
                 </div>
