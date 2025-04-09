@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import Navbar from "./ui/Navbar";
 import { Outlet } from "react-router";
-import { colors } from './theme/colors';
+import { colors } from "./theme/colors";
 
 export default function PageLayout() {
     const theme = createTheme({
@@ -10,12 +10,12 @@ export default function PageLayout() {
                 main: colors.fuchsia[600],
                 dark: colors.fuchsia[800],
                 light: colors.fuchsia[50],
-            }
+            },
         },
         typography: {
-            fontFamily: "Inconsolata"
-        }
-    })
+            fontFamily: "Inconsolata",
+        },
+    });
     const responsiveTheme = responsiveFontSizes(theme);
 
     return (

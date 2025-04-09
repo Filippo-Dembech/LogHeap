@@ -5,9 +5,8 @@ import TextEditor from "../../components/TextEditor";
 import { useState } from "react";
 
 export default function InsightForm({ className, onClose, onCleanup, onSave }) {
-    
     const [editorKey, setEditorKey] = useState(0);
-    
+
     const {
         control,
         handleSubmit,
@@ -23,7 +22,7 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
     function cleanUp() {
         resetForm?.();
         onCleanup?.();
-        setEditorKey(curr => curr + 1);
+        setEditorKey((curr) => curr + 1);
     }
 
     function onSubmit(data) {
@@ -56,16 +55,14 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
                 rules={{
                     required: "Title is required",
                 }}
-                render={({ field }) => {
-                    return (
-                        <TextField
-                            {...field}
-                            label="Title"
-                            error={errors?.title}
-                            helperText={errors?.title?.message}
-                        />
-                    );
-                }}
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        label="Title"
+                        error={errors?.title}
+                        helperText={errors?.title?.message}
+                    />
+                )}
             />
             <p>What is it?</p>
             <Controller
@@ -74,18 +71,14 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
                 rules={{
                     required: "Content is required",
                 }}
-                render={({ field }) => {
-                    //console.log(field);
-                    return (
-                    <div>
-                        <TextEditor
-                            {...field}
-                            key={editorKey}
-                            isInvalid={errors?.content}
-                            invalidText={errors?.content?.message}
-                        />
-                    </div>
-                )}}
+                render={({ field }) => (
+                    <TextEditor
+                        {...field}
+                        key={editorKey}
+                        isInvalid={errors?.content}
+                        invalidText={errors?.content?.message}
+                    />
+                )}
             />
             <Button
                 variant="contained"

@@ -29,11 +29,11 @@ export default function TextEditor({ onChange, isInvalid, invalidText, ...props 
     if (!editor) return null;
 
     return (
-        <div className="codeblock shadow-md rounded-2xl p-3 flex flex-col gap-3">
+        <div className="codeblock flex flex-col gap-3">
             <EditorContent
                 {...props}
                 editor={editor}
-                className={`order-2 rounded-2xl border-1 border-purple-200 p-3 focus:outline-none ${isInvalid ? "ring-[0.5px] ring-orange-500" : "" }`}
+                className={`order-2 rounded-md border-1 border-stone-300 p-3 focus:outline-none ${isInvalid ? "ring-[0.5px] ring-orange-500" : "" }`}
             />
             {isInvalid && <p className="text-xs order-3 text-orange-700 -m-1 pl-5">{invalidText}</p>}
             <div className="flex gap-3 order-1">
