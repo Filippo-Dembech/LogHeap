@@ -1,4 +1,4 @@
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Divider, TextField, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
@@ -46,7 +46,9 @@ export default function InsightsPage() {
                         + New Insight
                     </Button>
                     <InsightForm
-                        className={`mt-3 ${isCreating ? "flex flex-col gap-3" : "hidden"}`}
+                        className={`mt-3 ${
+                            isCreating ? "flex flex-col gap-3" : "hidden"
+                        }`}
                         onSave={(insight) => addInsight(insight)}
                         onCleanup={() => setIsCreating(false)}
                     />
@@ -64,7 +66,12 @@ export default function InsightsPage() {
                                 {insight.title}
                             </Typography>
                             <Divider />
-                            <div dangerouslySetInnerHTML={{ __html: insight.content}} />                       </div>
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: insight.content,
+                                }}
+                            />{" "}
+                        </div>
                     ))}
                 </div>
             </div>

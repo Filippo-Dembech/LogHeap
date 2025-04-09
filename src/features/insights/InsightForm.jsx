@@ -1,88 +1,45 @@
-import { Button, IconButton, TextField } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import { GiCancel } from "react-icons/gi";
+import { TextField } from "@mui/material";
 import TextEditor from "../../components/TextEditor";
-import { useState } from "react";
-import CloseButton from "../../components/CloseButton";
+import Form from "../../components/Form";
 
 export default function InsightForm({ className, onClose, onCleanup, onSave }) {
-
-    const [editorKey, setEditorKey] = useState(0);
-
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-        reset: resetForm,
-    } = useForm({
-        defaultValues: {
-            title: "",
-            content: "",
-        },
-    });
-
-    function cleanUp() {
-        resetForm?.();
-        onCleanup?.();
-        setEditorKey((curr) => curr + 1);
-    }
-
-    function onSubmit(data) {
-        onSave?.(data);
-        cleanUp();
-    }
-
-    function closeForm() {
-        onClose?.();
-        cleanUp?.();
-    }
-
     return (
-        <form
-            className={`relative shadow-cool p-8 rounded-lg mb-3 ${className}`}
-            onSubmit={handleSubmit(onSubmit)}
-        >
-            <span className="absolute top-1 right-1">
-                <CloseButton onClick={closeForm} />
-            </span>
-            <p>What is the insights about?</p>
-            <Controller
-                name="title"
-                control={control}
-                rules={{
-                    required: "Title is required",
-                }}
-                render={({ field }) => (
-                    <TextField
-                        {...field}
-                        label="Title"
-                        error={errors?.title}
-                        helperText={errors?.title?.message}
-                    />
-                )}
-            />
-            <p>What is it?</p>
-            <Controller
-                name="content"
-                control={control}
-                rules={{
-                    required: "Content is required",
-                }}
-                render={({ field }) => (
-                    <TextEditor
-                        {...field}
-                        key={editorKey}
-                        error={errors?.content}
-                        helperText={errors?.content?.message}
-                    />
-                )}
-            />
-            <Button
-                variant="contained"
-                type="submit"
+        <div className={className}>
+            <Form
+                submitText="Save"
+                onSubmit={onSave}
+                onClose={onClose}
+                onCleanup={onCleanup}
+                defaultValues={{ title: "", content: "" }}
             >
-                Save
-            </Button>
-        </form>
+                <p>What is the insights about?</p>
+                <Form.Field
+                    name="title"
+                    rules={{ required: "Title is required." }}
+                    render={({ field, fieldState: { error } }) => (
+                        <TextField
+                            {...field}
+                            label="Title"
+                            error={error}
+                            helperText={error?.message}
+                        />
+                    )}
+                />
+                <p>What is it?</p>
+                <Form.Field
+                    name="content"
+                    rules={{
+                        required: "Content is required",
+                    }}
+                    render={({ field, fieldState: { error } }) => (
+                        <TextEditor
+                            {...field}
+                            error={error}
+                            helperText={error?.message}
+                        />
+                    )}
+                />
+            </Form>
+        </div>
     );
 }

@@ -7,10 +7,10 @@ import Placeholder from "@tiptap/extension-placeholder";
 import DOMPurify from "dompurify";
 import ErrorFeedback from "./ErrorFeedback";
 import EditorButton from "./EditorButton";
+import { useEffect } from "react";
 
 export default function TextEditor({ onChange, error, helperText, ...props }) {
     const editor = useEditor({
-        content: props.value,
         extensions: [
             StarterKit,
             Underline,
@@ -24,6 +24,12 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
             onChange(sanitizedHTML);
         },
     });
+
+    useEffect(() => {
+        if (editor && props.value !== editor.getHTML()) {
+            editor.commands.setContent(props.value || "");
+        }
+    }, [props.value, editor]);
 
     if (!editor) return null;
 
