@@ -2,8 +2,12 @@ import { Button, IconButton, TextField } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { GiCancel } from "react-icons/gi";
 import TextEditor from "../../components/TextEditor";
+import { useState } from "react";
 
 export default function InsightForm({ className, onClose, onCleanup, onSave }) {
+    
+    const [editorKey, setEditorKey] = useState(0);
+    
     const {
         control,
         handleSubmit,
@@ -19,6 +23,7 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
     function cleanUp() {
         resetForm?.();
         onCleanup?.();
+        setEditorKey(curr => curr + 1);
     }
 
     function onSubmit(data) {
@@ -69,15 +74,18 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
                 rules={{
                     required: "Content is required",
                 }}
-                render={({ field }) => (
+                render={({ field }) => {
+                    //console.log(field);
+                    return (
                     <div>
                         <TextEditor
                             {...field}
+                            key={editorKey}
                             isInvalid={errors?.content}
                             invalidText={errors?.content?.message}
                         />
                     </div>
-                )}
+                )}}
             />
             <Button
                 variant="contained"
