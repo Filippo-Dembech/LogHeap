@@ -17,7 +17,6 @@ function Form({
     const { control, handleSubmit, reset: resetForm } = useForm(defaultValues);
 
     function submit(data) {
-        console.log(data)
         onSubmit?.(data);
         resetForm?.();
         onCleanup?.();

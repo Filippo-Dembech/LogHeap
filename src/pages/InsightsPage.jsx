@@ -2,6 +2,7 @@ import { Button, Divider, TextField, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
+import InsightCard from "../features/insights/InsightCard";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
@@ -55,23 +56,10 @@ export default function InsightsPage() {
                 </div>
                 <div className="my-3 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                     {insights.map((insight, i) => (
-                        <div
+                        <InsightCard
                             key={i}
-                            className="codeblock shadow-sm rounded-xl p-5 flex flex-col gap-2"
-                        >
-                            <Typography
-                                variant="h5"
-                                fontWeight={500}
-                            >
-                                {insight.title}
-                            </Typography>
-                            <Divider />
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: insight.content,
-                                }}
-                            />{" "}
-                        </div>
+                            insight={insight}
+                        />
                     ))}
                 </div>
             </div>
