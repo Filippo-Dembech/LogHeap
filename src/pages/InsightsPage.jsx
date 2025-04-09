@@ -9,7 +9,9 @@ export default function InsightsPage() {
     const [insights, setInsights] = useState([]);
 
     function addInsight(insight) {
-        setInsights((curr) => [...curr, insight]);
+        console.log("new insight: ");
+        console.log(insight);
+        //setInsights((curr) => [...curr, insight]);
     }
 
     return (

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Tooltip } from "@mui/material";
+import { ButtonGroup } from "@mui/material";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { FaBold, FaCode, FaItalic, FaUnderline } from "react-icons/fa";
