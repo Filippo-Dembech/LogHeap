@@ -7,7 +7,7 @@ import Underline from "@tiptap/extension-underline";
 import TooltipButton from "./TooltipButton";
 import Placeholder from "@tiptap/extension-placeholder";
 
-export default function TextEditor({ onSubmit }) {
+export default function TextEditor({ onChange, isInvalid, invalidText }) {
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -17,7 +17,7 @@ export default function TextEditor({ onSubmit }) {
             }),
         ],
         onUpdate: ({ editor }) => {
-            console.log(editor.getHTML());
+            onChange(editor.getHTML());
         },
     });
 
@@ -93,8 +93,9 @@ export default function TextEditor({ onSubmit }) {
             </div>
             <EditorContent
                 editor={editor}
-                className="rounded-2xl border-1 border-purple-200 p-3 focus:outline-none"
+                className={`rounded-2xl border-1 border-purple-200 p-3 focus:outline-none ${isInvalid ? "ring-[0.5px] ring-orange-500" : "" }`}
             />
+            {isInvalid && <p className="text-xs text-orange-700 -m-1 pl-5">{invalidText}</p>}
         </div>
     );
 }

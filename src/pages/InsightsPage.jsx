@@ -20,7 +20,6 @@ export default function InsightsPage() {
             >
                 INSIGHTS
             </Typography>
-            <TextEditor />
             <div>
                 <p>
                     Your insights are all the important, useful or just

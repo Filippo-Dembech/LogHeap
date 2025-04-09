@@ -1,6 +1,7 @@
-import { Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, IconButton, TextField } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { GiCancel } from "react-icons/gi";
+import TextEditor from "../../components/TextEditor";
 
 export default function InsightForm({ className, onClose, onCleanup, onSave }) {
     const {
@@ -69,12 +70,13 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
                     required: "Content is required",
                 }}
                 render={({ field }) => (
-                    <TextField
-                        {...field}
-                        label="Content"
-                        error={errors?.content}
-                        helperText={errors?.content?.message}
-                    />
+                    <div>
+                        <TextEditor
+                            {...field}
+                            isInvalid={errors?.content}
+                            invalidText={errors?.content?.message}
+                        />
+                    </div>
                 )}
             />
             <Button
