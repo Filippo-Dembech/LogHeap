@@ -31,20 +31,11 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
 
     return (
         <div className="codeblock flex flex-col gap-3">
-            <ErrorFeedback
-                show={error}
-                message={helperText}
-            >
-                <EditorContent
-                    {...props}
-                    editor={editor}
-                    className={`order-2 rounded-md border-1 border-stone-300 p-3 focus:outline-none ${error ? "ring-[0.5px] ring-orange-500" : "" }`}
-                />
-            </ErrorFeedback>
-            <div className="flex gap-3 order-1">
+            <div className="flex gap-3">
                 <ButtonGroup variant="outlined">
                     <TooltipButton
                         tooltipText="Ctrl + b"
+                        tabIndex="-1"
                         sx={{
                             backgroundColor: editor.isActive("bold")
                                 ? colors.fuchsia[100]
@@ -60,6 +51,7 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
                     </TooltipButton>
                     <TooltipButton
                         tooltipText="Ctrl + i"
+                        tabIndex="-1"
                         sx={{
                             backgroundColor: editor.isActive("italic")
                                 ? colors.fuchsia[100]
@@ -75,6 +67,7 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
                     </TooltipButton>
                     <TooltipButton
                         tooltipText="Ctrl + u"
+                        tabIndex="-1"
                         sx={{
                             backgroundColor: editor.isActive("underline")
                                 ? colors.fuchsia[100]
@@ -92,6 +85,7 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
                 <ButtonGroup>
                     <TooltipButton
                         tooltipText="Ctrl + e"
+                        tabIndex="-1"
                         sx={{
                             backgroundColor: editor.isActive("code")
                                 ? colors.fuchsia[100]
@@ -107,6 +101,16 @@ export default function TextEditor({ onChange, error, helperText, ...props }) {
                     </TooltipButton>
                 </ButtonGroup>
             </div>
+            <ErrorFeedback
+                show={error}
+                message={helperText}
+            >
+                <EditorContent
+                    {...props}
+                    editor={editor}
+                    className={`rounded-md border-1 border-stone-300 p-3 focus:outline-none ${error ? "ring-[0.5px] ring-orange-500" : "" }`}
+                />
+            </ErrorFeedback>
         </div>
     );
 }
