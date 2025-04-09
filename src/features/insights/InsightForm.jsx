@@ -3,7 +3,7 @@ import TextEditor from "../../components/TextEditor";
 import Form from "../../components/Form";
 import { db } from "../../db/db";
 
-export default function InsightForm({ className, onClose, onCleanup }) {
+export default function InsightForm({ focus, className, onClose, onCleanup }) {
     
     function addInsight(insight) {
         db.insights.add(insight)
@@ -25,6 +25,7 @@ export default function InsightForm({ className, onClose, onCleanup }) {
                     render={({ field, fieldState: { error } }) => (
                         <TextField
                             {...field}
+                            autoFocus={focus}
                             label="Title"
                             error={error}
                             helperText={error?.message}

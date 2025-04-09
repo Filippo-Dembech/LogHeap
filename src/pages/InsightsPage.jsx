@@ -1,16 +1,25 @@
 import { Button, Divider, LinearProgress, TextField, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
 import InsightCard from "../features/insights/InsightCard";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db/db";
+import { useLocation } from "react-router";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
     const insights = useLiveQuery(() => db.insights.toArray());
+    const { state } = useLocation();
     
+    useEffect(() => {
+        if (state?.openForm) {
+            setIsCreating(true)
+        }
+    }, [state])
+
     if (!insights) return <LinearProgress />
+        
 
     return (
         <div className="p-8 flex flex-col gap-8">
@@ -47,6 +56,7 @@ export default function InsightsPage() {
                         + New Insight
                     </Button>
                     <InsightForm
+                        focus={isCreating}
                         className={`mt-3 ${
                             isCreating ? "flex flex-col gap-3" : "hidden"
                         }`}

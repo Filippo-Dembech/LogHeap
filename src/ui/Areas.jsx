@@ -1,5 +1,5 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { FaMapPin, FaQuestion, FaTasks } from "react-icons/fa";
 import { LuBlocks } from "react-icons/lu";
@@ -32,33 +32,61 @@ export default function Areas({ className }) {
     const areas = [
         {
             title: "insights",
+            shortcut: "Shift + i",
             icon: <FaMapPin />,
             content:
                 "Collect all the cool and useful stuff you learn about the language.",
         },
         {
             title: "questions",
+            shortcut: "Shift + q",
             icon: <FaQuestion />,
             content: "Confused while reading? Stash questions and keep going.",
         },
         {
             title: "patterns",
+            shortcut: "Shift + a",
             icon: <LuBlocks />,
             content: "Found cool patterns in code or docs? Save them here!",
         },
         {
             title: "todos",
+            shortcut: "Shift + d",
             icon: <FaTasks />,
             content:
                 "Got tech, articles, or tutorials to check out? Stash them here for later!",
         },
     ];
 
+    useEffect(() => {
+        function callback(e) {
+            if (e.shiftKey && e.code === "KeyI") {
+                navigate("/insights", { state: { openForm: true }});
+            }
+            if (e.shiftKey && e.code === "KeyQ") {
+                navigate("/questions");
+            }
+            if (e.shiftKey && e.code === "KeyA") {
+                navigate("/patterns");
+            }
+            if (e.shiftKey && e.code === "KeyD") {
+                navigate("/todos");
+            }
+        }
+
+        document.addEventListener("keydown", callback);
+        return () => document.removeEventListener("keydown", callback);
+    }, []);
+
     return (
         <div className={className}>
             <div className="flex flex-col px-8 gap-8 sm:hidden">
                 {areas.map((area, i) => (
-                    <div key={i} className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50" onClick={() => navigate(`/${area.title}`)}>
+                    <div
+                        key={i}
+                        className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50"
+                        onClick={() => navigate(`/${area.title}`)}
+                    >
                         <Box
                             className="absolute top-0 right-0 scale-200 rotate-30 transition-all group-hover:rotate-0 group-hover:top-5 group-hover:right-5"
                             color="primary.main"
