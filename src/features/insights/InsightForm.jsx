@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { GiCancel } from "react-icons/gi";
 import TextEditor from "../../components/TextEditor";
@@ -33,7 +33,7 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
 
     return (
         <form
-            className={`relative shadow-cool p-8 flex-col gap-3 rounded-lg mb-3 ${className}`}
+            className={`relative shadow-cool p-8 rounded-lg mb-3 ${className}`}
             onSubmit={handleSubmit(onSubmit)}
         >
             <span className="absolute top-1 right-1">

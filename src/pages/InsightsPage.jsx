@@ -2,15 +2,12 @@ import { Button, Divider, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useState } from "react";
 import InsightForm from "../features/insights/InsightForm";
-import TextEditor from "../components/TextEditor";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
     const [insights, setInsights] = useState([]);
 
     function addInsight(insight) {
-        //console.log("new insight: ");
-        //console.log(insight);
         setInsights((curr) => [...curr, insight]);
     }
 
@@ -49,7 +46,7 @@ export default function InsightsPage() {
                         + New Insight
                     </Button>
                     <InsightForm
-                        className={`mt-3 ${isCreating ? "flex" : "hidden"}`}
+                        className={`mt-3 ${isCreating ? "flex flex-col gap-3" : "hidden"}`}
                         onSave={(insight) => addInsight(insight)}
                         onCleanup={() => setIsCreating(false)}
                     />
