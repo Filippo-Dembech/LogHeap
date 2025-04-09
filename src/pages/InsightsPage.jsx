@@ -1,4 +1,4 @@
-import { Button, Divider, LinearProgress, TextField, Typography } from "@mui/material";
+import { Button, Divider, LinearProgress, Typography } from "@mui/material";
 import NavbarLink from "../components/NavbarLink";
 import { useEffect, useState } from "react";
 import InsightForm from "../features/insights/InsightForm";

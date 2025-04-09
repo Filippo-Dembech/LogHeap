@@ -7,7 +7,7 @@ export default function InsightCard({ insight }) {
         >
             <Typography
                 variant="h5"
-                fontWeight={500}
+                fontWeight={700}
             >
                 {insight.title}
             </Typography>
