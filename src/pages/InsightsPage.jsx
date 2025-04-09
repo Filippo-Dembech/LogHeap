@@ -55,7 +55,7 @@ export default function InsightsPage() {
                     {insights.map((insight, i) => (
                         <div
                             key={i}
-                            className="shadow-sm rounded-xl p-5 flex flex-col gap-2"
+                            className="codeblock shadow-sm rounded-xl p-5 flex flex-col gap-2"
                         >
                             <Typography
                                 variant="h5"
