@@ -57,8 +57,8 @@ export default function Areas({ className }) {
     return (
         <div className={className}>
             <div className="flex flex-col px-8 gap-8 sm:hidden">
-                {areas.map((area) => (
-                    <div className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50" onClick={() => navigate(`/${area.title}`)}>
+                {areas.map((area, i) => (
+                    <div key={i} className="group bg-white shadow-md relative rounded-xl p-5 cursor-pointer transition-all hover:scale-105 hover:bg-purple-50" onClick={() => navigate(`/${area.title}`)}>
                         <Box
                             className="absolute top-0 right-0 scale-200 rotate-30 transition-all group-hover:rotate-0 group-hover:top-5 group-hover:right-5"
                             color="primary.main"
