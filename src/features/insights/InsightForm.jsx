@@ -3,8 +3,10 @@ import { Controller, useForm } from "react-hook-form";
 import { GiCancel } from "react-icons/gi";
 import TextEditor from "../../components/TextEditor";
 import { useState } from "react";
+import CloseButton from "../../components/CloseButton";
 
 export default function InsightForm({ className, onClose, onCleanup, onSave }) {
+
     const [editorKey, setEditorKey] = useState(0);
 
     const {
@@ -41,12 +43,7 @@ export default function InsightForm({ className, onClose, onCleanup, onSave }) {
             onSubmit={handleSubmit(onSubmit)}
         >
             <span className="absolute top-1 right-1">
-                <IconButton
-                    onClick={closeForm}
-                    size="small"
-                >
-                    <GiCancel />
-                </IconButton>
+                <CloseButton onClick={closeForm} />
             </span>
             <p>What is the insights about?</p>
             <Controller

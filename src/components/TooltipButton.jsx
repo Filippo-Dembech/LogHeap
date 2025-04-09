@@ -4,7 +4,6 @@ export default function TooltipButton({ tooltipText, ...props }) {
     return (
         <Tooltip
             title={tooltipText}
-            tabIndex="0"
             arrow
             placement="top"
             slotProps={{ transition: { timeout: 200 } }}
