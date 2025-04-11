@@ -1,21 +1,22 @@
-import { TextField } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 import TextEditor from "../../components/TextEditor";
 import Form from "../../components/Form";
-import { db } from "../../db/db";
 import CreatableSelect from "react-select/creatable";
+import { createInsight } from "./createInsight";
+import { option } from "../../utils/option";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../../db/db";
 
 export default function InsightForm({ focus, className, onClose, onCleanup }) {
-    
-    function addInsight(insight) {
-        console.log(insight)
-        db.insights.add(insight);
-    }
+    const existingTags = useLiveQuery(() => db.tags.toArray());
+
+    if (!existingTags) return <CircularProgress />;
 
     return (
         <div className={className}>
             <Form
                 submitText="Save"
-                onSubmit={addInsight}
+                onSubmit={createInsight}
                 onClose={onClose}
                 onCleanup={onCleanup}
                 defaultValues={{ title: "", content: "" }}
@@ -50,15 +51,13 @@ export default function InsightForm({ focus, className, onClose, onCleanup }) {
                 />
                 <p>Tags:</p>
                 <Form.Field
-                    name="tag"
+                    name="tags"
                     render={({ field }) => (
                         <CreatableSelect
                             {...field}
                             isMulti
                             options={[
-                                { value: 1, label: "first" },
-                                { value: 2, label: "second" },
-                                { value: 3, label: "third" },
+                                ...existingTags.map((tag) => option(tag.label)),
                             ]}
                         />
                     )}
