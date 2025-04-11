@@ -5,6 +5,7 @@ import { db } from "../../db/db";
 import CreatableSelect from "react-select/creatable";
 
 export default function InsightForm({ focus, className, onClose, onCleanup }) {
+    
     function addInsight(insight) {
         console.log(insight)
         db.insights.add(insight);
