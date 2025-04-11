@@ -2,11 +2,12 @@ import { TextField } from "@mui/material";
 import TextEditor from "../../components/TextEditor";
 import Form from "../../components/Form";
 import { db } from "../../db/db";
+import CreatableSelect from "react-select/creatable";
 
 export default function InsightForm({ focus, className, onClose, onCleanup }) {
-    
     function addInsight(insight) {
-        db.insights.add(insight)
+        console.log(insight)
+        db.insights.add(insight);
     }
 
     return (
@@ -43,6 +44,21 @@ export default function InsightForm({ focus, className, onClose, onCleanup }) {
                             {...field}
                             error={error}
                             helperText={error?.message}
+                        />
+                    )}
+                />
+                <p>Tags:</p>
+                <Form.Field
+                    name="tag"
+                    render={({ field }) => (
+                        <CreatableSelect
+                            {...field}
+                            isMulti
+                            options={[
+                                { value: 1, label: "first" },
+                                { value: 2, label: "second" },
+                                { value: 3, label: "third" },
+                            ]}
                         />
                     )}
                 />
