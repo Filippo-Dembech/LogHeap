@@ -11,20 +11,24 @@ export default function InsightCard({ insight }) {
     if (!tags) return <CircularProgress />;
 
     return (
-        <div className="codeblock shadow-sm rounded-xl p-5 flex flex-col gap-2">
-            <Typography
-                variant="h5"
-                fontWeight={700}
-            >
-                {insight.title}
-            </Typography>
-            <Divider />
+        <div className="codeblock shadow-sm rounded-xl p-5 flex flex-col gap-4">
+            <div>
+                <Typography
+                    variant="h5"
+                    fontWeight={700}
+                    marginBottom={1}
+                >
+                    {insight.title}
+                </Typography>
+                <Divider />
+            </div>
             <div
+                className="bg-slate-50 p-3 rounded-xl"
                 dangerouslySetInnerHTML={{
                     __html: insight.content,
                 }}
             />{" "}
-            <Tags className="mt-2" tags={tags} />
+            <Tags className="mt-auto" tags={tags} />
         </div>
     );
 }

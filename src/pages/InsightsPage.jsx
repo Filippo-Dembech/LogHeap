@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 
 export default function InsightsPage() {
     const [isCreating, setIsCreating] = useState(false);
-    const insights = useLiveQuery(() => db.insights.toArray());
+    const insights = useLiveQuery(() => db.insights.orderBy("id").reverse().toArray());
     const { state } = useLocation();
     
     useEffect(() => {
@@ -64,7 +64,7 @@ export default function InsightsPage() {
                     />
                 </div>
                 <div className="my-3 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-                    {insights.map((insight, i) => (
+                    {insights.reverse().map((insight, i) => (
                         <InsightCard
                             key={i}
                             insight={insight}
