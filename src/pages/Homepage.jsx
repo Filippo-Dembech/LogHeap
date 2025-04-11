@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import TypewriterHero from "../ui/TypewriterHero";
 import Areas from "../ui/Areas";
-import GradientText from "../components/GradientTexrt";
+import GradientText from "../components/GradientText";
 
 export default function Homepage() {
     return (
@@ -16,7 +16,7 @@ export default function Homepage() {
             </Typography>
 
             <div
-                className="bg-purple-200 text-white py-8 px-3 sm:rounded-2xl"
+                className="bg-purple-700 text-white py-8 px-3 sm:rounded-2xl"
             >
                 <Typography
                     variant="h4"
