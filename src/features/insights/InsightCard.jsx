@@ -1,4 +1,4 @@
-import { Chip, CircularProgress, Divider, Typography } from "@mui/material";
+import { CircularProgress, Divider, Typography } from "@mui/material";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db/db";
 import Tags from "../tags/Tags";
@@ -24,7 +24,7 @@ export default function InsightCard({ insight }) {
                     __html: insight.content,
                 }}
             />{" "}
-            <Tags tags={tags} />
+            <Tags className="mt-2" tags={tags} />
         </div>
     );
 }
