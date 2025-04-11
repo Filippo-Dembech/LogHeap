@@ -5,7 +5,8 @@ import GradientText from "../components/GradientText";
 
 export default function Homepage() {
     return (
-        <div className="max-w-[800px] m-auto flex flex-col gap-8 py-8 sm:gap-10 sm:py-10">
+        <div className="max-w-[800px] m-auto flex flex-col gap-8 pt-8 sm:gap-10 sm:py-10">
+        {/* 
             <Typography
                 variant="h1"
                 textAlign="center"
@@ -14,15 +15,14 @@ export default function Homepage() {
             >
                 <GradientText>Log-Heap</GradientText>
             </Typography>
-
+*/}
             <div
-                className="bg-purple-700 text-white py-8 px-3 sm:rounded-2xl"
+                className="bg-purple-200 py-8 px-3 sm:rounded-xl"
             >
                 <Typography
                     variant="h4"
                     textAlign="center"
                     fontFamily="Maven Pro"
-                    fontWeight="bold"
                 >
                     Stash all your Computer Science knowledge in a single place
                 </Typography>

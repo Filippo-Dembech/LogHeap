@@ -25,7 +25,7 @@ export default function PageLayout() {
                 <main className="flex-1">
                     <Outlet />
                 </main>
-                <footer className="bg-purple-400 mt-8 text-right p-10">
+                <footer className="bg-purple-400 text-right p-10">
                     Created by Filippo Dembech ©
                 </footer>
             </div>
